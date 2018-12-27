@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.12.1" systemVersion="18D32a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Path" representedClassName="Path" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fromRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routes" inverseName="hasPath" inverseEntity="Routes" syncable="YES"/>
+    </entity>
+    <entity name="Points" representedClassName="Points" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fromRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routes" inverseName="hasPoints" inverseEntity="Routes" syncable="YES"/>
+    </entity>
+    <entity name="Routes" representedClassName="Routes" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latMax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latMin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lonMax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lonMin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasPath" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Path" inverseName="fromRoute" inverseEntity="Path" syncable="YES"/>
+        <relationship name="hasPoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Points" inverseName="fromRoute" inverseEntity="Points" syncable="YES"/>
+        <relationship name="hasStops" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stops" inverseName="fromRoute" inverseEntity="Stops" syncable="YES"/>
+    </entity>
+    <entity name="Stops" representedClassName="Stops" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stopId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fromRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routes" inverseName="hasStops" inverseEntity="Routes" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Routes" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Stops" positionX="-54" positionY="18" width="128" height="150"/>
+        <element name="Path" positionX="-36" positionY="81" width="128" height="90"/>
+        <element name="Points" positionX="-27" positionY="90" width="128" height="90"/>
+    </elements>
 </model>

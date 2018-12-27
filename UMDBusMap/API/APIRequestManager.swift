@@ -26,6 +26,8 @@ class APIRequestManager {
     }
     
     func parseData(data: Data, completion: @escaping () -> Void) {
+        print(String(data: data, encoding: .utf8))
     }
+    
 }
 
