@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 
 class OptionsTableViewController: UITableViewController {
-    var tableMode = "Stops"
+    var tableMode = "Routes"
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var context: NSManagedObjectContext?
+    var selectedRoute: Routes?
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Routes> = {
         // Create Fetch Request
@@ -35,6 +36,7 @@ class OptionsTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest<Stops> = Stops.fetchRequest()
         
         // Configure Fetch Request
+        fetchRequest.predicate = NSPredicate(format: "fromRoute == %@", selectedRoute!)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "tag", ascending: true)]
         
         // Create Fetched Results Controller
@@ -55,7 +57,7 @@ class OptionsTableViewController: UITableViewController {
         
         //APIRequestManager.sharedInstance.MakeAPICall(url: URL(string: NextBusAPICalls.routeList)!, completion: {})
         
-        try! StopsfetchedResultsController.performFetch()
+        try! fetchedResultsController.performFetch()
         //APIRequestManager.sharedInstance.req
     }
     
@@ -64,19 +66,36 @@ class OptionsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let items = fetchedResultsController.fetchedObjects else { return 0 }
-        return items.count
+        switch tableMode {
+        case "Routes":
+            guard let items = fetchedResultsController.fetchedObjects else { return 0 }
+            return items.count
+        default:
+            guard let items = StopsfetchedResultsController.fetchedObjects else { return 0 }
+            return items.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell")!
-        let route = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = route.title
+        switch tableMode {
+        case "Routes":
+            let route = fetchedResultsController.object(at: indexPath)
+            cell.textLabel?.text = route.title
+        default:
+            let stop = StopsfetchedResultsController.object(at: indexPath)
+            cell.textLabel?.text = stop.title
+        }
+        
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableMode == "Routes" {
+            tableMode = "Stops"
+            selectedRoute = fetchedResultsController.object(at: indexPath)
+        }
         reload()
     }
     

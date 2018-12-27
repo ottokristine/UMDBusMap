@@ -62,5 +62,22 @@ class NextBusCoreDataManager {
             return nil
         }
     }
+    
+    static func getStops() -> [Stops] {
+        let context = appDelegate.persistentContainer.viewContext
+        var stops = [Stops]()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Stops")
+        
+        do {
+            let results = try context.fetch(fetchRequest) as! [NSManagedObject]
+            for result in results {
+                stops.append(result as! Stops)
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch stops. Error: \(error.localizedDescription)")
+        }
+            return stops
+    }
 }
 
