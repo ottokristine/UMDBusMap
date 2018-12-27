@@ -18,6 +18,7 @@
 		6408CBCB21D4121E00E73ACA /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408CBCA21D4121E00E73ACA /* APIRequestManager.swift */; };
 		6408CBCD21D4126000E73ACA /* NextBusAPICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408CBCC21D4126000E73ACA /* NextBusAPICalls.swift */; };
 		6408CBCF21D4236D00E73ACA /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6408CBCE21D4236D00E73ACA /* README.txt */; };
+		6408CBD121D467DC00E73ACA /* NextBusCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408CBD021D467DC00E73ACA /* NextBusCoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		6408CBCA21D4121E00E73ACA /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		6408CBCC21D4126000E73ACA /* NextBusAPICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBusAPICalls.swift; sourceTree = "<group>"; };
 		6408CBCE21D4236D00E73ACA /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		6408CBD021D467DC00E73ACA /* NextBusCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBusCoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				6408CBA321D4113200E73ACA /* LaunchScreen.storyboard */,
 				6408CBA621D4113200E73ACA /* Info.plist */,
 				6408CB9E21D4113000E73ACA /* UMDBusMap.xcdatamodeld */,
+				6408CBD021D467DC00E73ACA /* NextBusCoreDataManager.swift */,
 			);
 			path = UMDBusMap;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				6408CBA021D4113000E73ACA /* UMDBusMap.xcdatamodeld in Sources */,
 				6408CB9A21D4113000E73ACA /* OptionsTableViewController.swift in Sources */,
 				6408CBCD21D4126000E73ACA /* NextBusAPICalls.swift in Sources */,
+				6408CBD121D467DC00E73ACA /* NextBusCoreDataManager.swift in Sources */,
 				6408CB9821D4113000E73ACA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
